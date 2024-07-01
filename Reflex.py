@@ -1,22 +1,38 @@
 #### Reflex Game
 import os
 
-### stores the attempts in dictionary
-attempts = {}
+attempts = {
+    "bob" : {
+        "Graduation": "1988",
+        "Time": 3
+    }
+}
 
-### gets inputs and stores in attempts dictionary
+previousUser = "bob"
+
 repeat = True
 while(repeat):
+
     name = input("What is your name? ")
     graduation = input("What year did you graduate? ")
-    time = input("#: ")
+    time = int(input("#: "))
 
+    user = { name : { "Graduation": graduation, "Time": time }}
 
-    attempts[name] = graduation
-    attempts[name] = time
+    attempts.update(user)
 
+    previousTime = attempts[previousUser]["Time"]
+
+    if time > previousTime:
+        del attempts[previousUser]
+    elif time < previousTime:
+        del attempts[name]
 
     print(attempts)
+
+    
+
+    
 
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
