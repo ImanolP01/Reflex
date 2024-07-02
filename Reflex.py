@@ -6,19 +6,20 @@ import keyboard
 import string
 
 
-
-
-
-
 timer=random.randint(2,5)
-attempts = []
+
+txtfile = open("inputs.txt", "r")
+data = str(txtfile.readlines())
+txtfile.close()
 
 
+attempts = data
 
-previousUser = "bob"
+
+print(attempts)
+
 counter = 1
 repeat = True
-
 while(repeat):
 
 
@@ -52,6 +53,7 @@ while(repeat):
 
   
     print("Counter: ", counter)
+    
 
     if counter > 9:
         var = attempts[9]['Time'] 
@@ -60,15 +62,17 @@ while(repeat):
     
     
     ### sorts dictionaries in list based on Time 
-    attempts = sorted(attempts, key=lambda x: x['Time'])
-    print(attempts)
+    
     counter += 1
 
     
     #### txt file stuff
-    txtfile = open('inputs.txt', 'a+')
+    txtfile = open("inputs.txt", "w")
     txtfile.write(str(attempts))
     txtfile.close()
+   
+    attempts = sorted(attempts, key=lambda x: x['Time'])
+    print(attempts)
       
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
