@@ -22,23 +22,21 @@ while(repeat):
 
     attempts.append(user)
 
+  
+    print("Counter: ", counter)
+
     
-    counter += 1
-    print(counter)
-
-    var = attempts[0]['Time'] 
-    print(var)
-
-    if var > time:
-        attempts.pop(0)
+    if counter > 9:
+        var = attempts[9]['Time'] 
+        if var > time:
+            attempts.pop(9)
     
-    print(attempts)
-
+    
     ### sorts dictionaries in list based on Time 
     attempts = sorted(attempts, key=lambda x: x['Time'])
+    print(attempts)
+    counter += 1
       
-
-
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
         repeat = False
