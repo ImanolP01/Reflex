@@ -6,20 +6,21 @@ import keyboard
 import string
 
 
+
+
+
+
 timer=random.randint(2,5)
-attempts = [
-     {
-        "Name": "bob",
-        "Graduation": "1988",
-        "Time": 3
-    }
-]
+attempts = []
+
+
 
 previousUser = "bob"
 counter = 1
 repeat = True
 
 while(repeat):
+
 
     name = input("What is your name? ")
     graduation = input("What year did you graduate? ")
@@ -52,7 +53,6 @@ while(repeat):
   
     print("Counter: ", counter)
 
-    
     if counter > 9:
         var = attempts[9]['Time'] 
         if var > time1:
@@ -63,6 +63,12 @@ while(repeat):
     attempts = sorted(attempts, key=lambda x: x['Time'])
     print(attempts)
     counter += 1
+
+    
+    #### txt file stuff
+    txtfile = open('inputs.txt', 'a+')
+    txtfile.write(str(attempts))
+    txtfile.close()
       
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
