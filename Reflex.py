@@ -9,7 +9,7 @@ attempts = {
 }
 
 previousUser = "bob"
-
+counter = 0
 repeat = True
 while(repeat):
 
@@ -22,17 +22,23 @@ while(repeat):
     attempts.update(user)
 
     previousTime = attempts[previousUser]["Time"]
+    if counter > 10:
+        if time < previousTime:
+            del attempts[previousUser]
+            previousUser = name
+            previousTime = time
+        elif time > previousTime:
+            del attempts[name]
 
-    if time > previousTime:
-        del attempts[previousUser]
-    elif time < previousTime:
-        del attempts[name]
+    counter += 1
+    print(counter)
+
+    for x, user in attempts.items():
+        print(x)
+        for time in user.items():
+            print(time)
 
     print(attempts)
-
-    
-
-    
 
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
