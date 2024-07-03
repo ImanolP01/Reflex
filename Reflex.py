@@ -48,8 +48,6 @@ for c in data:
 
 
 attempts = sorted(attempts, key=lambda x: x['Time'])
-print(len(attempts))
-print(attempts)
 
 
 counter = 1
@@ -93,7 +91,7 @@ while(repeat):
     if len(attempts) > 10:
         attempts = attempts[0:10]
     
-    print(len(attempts))
+ 
     
 
 
@@ -103,7 +101,7 @@ while(repeat):
     txtfile.write(str(attempts))
     txtfile.close()
     
-    
+    print("Score board: ")
     print(attempts)
     filler = input("")
     try_again = input("Press anything but 0 to try again. ")
