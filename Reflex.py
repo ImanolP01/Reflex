@@ -12,11 +12,45 @@ txtfile = open("inputs.txt", "r")
 data = str(txtfile.readlines())
 txtfile.close()
 
+### credit to charlie for helping us retrieve player data back
+attempts = []
+for c in data:
+    if c == "{":
+        index = data.index(",")
+        index -= 2
+        name = ""
+        while data[index] != "\'":
+            name = data[index] + name
+            index -= 1
 
-attempts = data
+        data = data[data.index(",") + 1:]
+        grad_year = ""
+        index = data.index(",")
+        index -= 2
+        while data[index] != "\'":
+            grad_year = data[index] + grad_year
+            index -= 1
+
+        data = data[data.index(",") + 1:]
+        time1 = ""
+        index = data.index("}")
+        index -= 1
+        while data[index] != " ":
+            time1 = data[index] + time1
+            index -= 1
+
+        try:
+            data = data[data.index(",") + 1:]
+        except:
+            ...
+        attempts.append({'Name':name, 'Graduation':grad_year, 'Time': float(time1)})
+        
 
 
+attempts = sorted(attempts, key=lambda x: x['Time'])
+print(len(attempts))
 print(attempts)
+
 
 counter = 1
 repeat = True
@@ -51,29 +85,27 @@ while(repeat):
 
     attempts.append(user)
 
-  
-    print("Counter: ", counter)
+    attempts = sorted(attempts, key=lambda x: x['Time'])
+
+    
     
 
-    if counter > 9:
-        var = attempts[9]['Time'] 
-        if var > time1:
-            attempts.pop(9)
+    if len(attempts) > 10:
+        attempts = attempts[0:10]
     
+    print(len(attempts))
     
-    ### sorts dictionaries in list based on Time 
-    
-    counter += 1
+
 
     
     #### txt file stuff
     txtfile = open("inputs.txt", "w")
     txtfile.write(str(attempts))
     txtfile.close()
-   
-    attempts = sorted(attempts, key=lambda x: x['Time'])
+    
+    
     print(attempts)
-      
+    filler = input("")
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
         repeat = False
