@@ -1,0 +1,1 @@
+[{'Name': 'Peyton', 'Graduation': '2024', 'Date': '2024-07-03 16:11:23.415182', 'Time': 0.98}, {'Name': 'Imanol', 'Graduation': '2024', 'Date': '2024-07-03 16:11:07.031849', 'Time': 1.14}, {'Name': 'King Bob', 'Graduation': '1375', 'Date': '2024-07-03 16:11:50.734307', 'Time': 1.21}]

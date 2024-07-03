@@ -35,6 +35,14 @@ for c in data:
             index -= 1
 
         data = data[data.index(",") + 1:]
+        index = data.index(",")
+        index -= 2
+        date = ""
+        while data[index] != "\'":
+            date = data[index] + date
+            index -= 1
+
+        data = data[data.index(",") + 1:]
         time1 = ""
         index = data.index("}")
         index -= 1
@@ -46,7 +54,7 @@ for c in data:
             data = data[data.index(",") + 1:]
         except:
             ...
-        attempts.append({'Name':name, 'Graduation':grad_year, 'Time': float(time1)})
+        attempts.append({'Name':name, 'Graduation':grad_year, 'Date':date, 'Time': float(time1)})
         
 
 
