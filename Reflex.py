@@ -6,12 +6,14 @@ import keyboard
 import string
 from datetime import datetime
 
-current_time=str(datetime.now())
+
+
 timer=random.randint(2,5)
 
 txtfile = open("inputs.txt", "r")
 data = str(txtfile.readlines())
 txtfile.close()
+
 
 ### credit to charlie for helping us retrieve player data back
 attempts = []
@@ -44,7 +46,7 @@ for c in data:
             data = data[data.index(",") + 1:]
         except:
             ...
-        attempts.append({'Name':name, 'Graduation':grad_year,"Date":current_time, 'Time': float(time1)})
+        attempts.append({'Name':name, 'Graduation':grad_year, 'Time': float(time1)})
         
 
 
@@ -54,7 +56,8 @@ attempts = sorted(attempts, key=lambda x: x['Time'])
 counter = 1
 repeat = True
 while(repeat):
-
+    current_time=str(datetime.now())
+    print(current_time)
 
     name = input("What is your name? ")
     graduation = input("What year did you graduate? ")
@@ -80,9 +83,10 @@ while(repeat):
             key_no_press=False
             break
 
-    user = { "Name": name, "Graduation": graduation, "Time":float(f"{time1:.2f}")}
+    user = {"Name": name, "Graduation": graduation, "Date": current_time, "Time":float(f"{time1:.2f}")}
 
     attempts.append(user)
+    
 
     attempts = sorted(attempts, key=lambda x: x['Time'])
 
@@ -104,7 +108,7 @@ while(repeat):
     
     print("Score board: ")
     print(attempts)
-    filler = input("")
+    filler = input("Press enter: ")
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
         repeat = False
