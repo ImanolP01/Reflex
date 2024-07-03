@@ -4,8 +4,9 @@ import time
 import random
 import keyboard
 import string
+from datetime import datetime
 
-
+current_time=str(datetime.now())
 timer=random.randint(2,5)
 
 txtfile = open("inputs.txt", "r")
@@ -43,7 +44,7 @@ for c in data:
             data = data[data.index(",") + 1:]
         except:
             ...
-        attempts.append({'Name':name, 'Graduation':grad_year, 'Time': float(time1)})
+        attempts.append({'Name':name, 'Graduation':grad_year,"Date":current_time, 'Time': float(time1)})
         
 
 
