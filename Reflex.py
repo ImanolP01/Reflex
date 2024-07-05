@@ -99,23 +99,22 @@ while(repeat):
     attempts = sorted(attempts, key=lambda x: x['Time'])
 
     
-    
+   
 
     if len(attempts) > 10:
         attempts = attempts[0:10]
     
  
     
-
-
     
     #### txt file stuff
     txtfile = open("inputs.txt", "w")
     txtfile.write(str(attempts))
     txtfile.close()
     
+    
     print("Score board: ")
-    print(attempts)
+    [print(i) for i in attempts]
     filler = input("Press enter: ")
     try_again = input("Press anything but 0 to try again. ")
     if try_again == "0":
