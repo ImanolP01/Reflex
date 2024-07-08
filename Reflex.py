@@ -6,14 +6,10 @@ import keyboard
 import string
 from datetime import datetime
 
-
-
 timer=random.randint(2,5)
-
 txtfile = open("inputs.txt", "r")
 data = str(txtfile.readlines())
 txtfile.close()
-
 
 ### credit to charlie for helping us retrieve player data back
 attempts = []
@@ -55,11 +51,8 @@ for c in data:
         except:
             ...
         attempts.append({'Name':name, 'Graduation':grad_year, 'Date':date, 'Time': float(time1)})
-        
-
-
+### sorts the list based on time        
 attempts = sorted(attempts, key=lambda x: x['Time'])
-
 
 counter = 1
 repeat = True
@@ -92,27 +85,18 @@ while(repeat):
             break
 
     user = {"Name": name, "Graduation": graduation, "Date": current_time, "Time":float(f"{time1:.2f}")}
-
     attempts.append(user)
-    
-
     attempts = sorted(attempts, key=lambda x: x['Time'])
 
-    
-   
-
+    ### only keeps the top 10 scores
     if len(attempts) > 10:
         attempts = attempts[0:10]
-    
- 
-    
     
     #### txt file stuff
     txtfile = open("inputs.txt", "w")
     txtfile.write(str(attempts))
     txtfile.close()
-    
-    
+    ### print score board
     print("Score board: ")
     [print(i) for i in attempts]
     filler = input("Press enter: ")
